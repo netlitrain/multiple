@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = "simple-html"
-        CONTAINER_NAME = "html-${env.BRANCH_NAME}".replaceAll("/", "-")
+        CONTAINER_NAME = "Web-Server-Container"
     }
 
     stages {
@@ -16,7 +16,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                    docker build -t "${IMAGE_NAME}:${env.BRANCH_NAME}" .
+                    sh "docker build -t ${IMAGE_NAME}:${env.BRANCH_NAME} ."
             }
         }
 
